@@ -1,7 +1,19 @@
 package ESPM.POO.PROVA_PARCIAL;
 
-public class Cliente {
+public abstract class Cliente {
 
-    String nome;
+    private String nome;
+
+    public Cliente() {
+
+    }
+    
+    public Cliente(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
     
 }
