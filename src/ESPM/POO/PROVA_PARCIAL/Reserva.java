@@ -1,6 +1,6 @@
 package ESPM.POO.PROVA_PARCIAL;
 
-public class Reserva {
+public class Reserva implements Pagamento {
 
     private Cliente cliente;
     private boolean pagamentoAVista;
@@ -21,4 +21,15 @@ public class Reserva {
         // TODO Auto-generated method stub
         return "";
     }
+
+    @Override
+    public double calcularPagamento(){
+        double valor=3200;
+        if(pagamentoAVista==true){
+            valor=0.9*3200;
+        }
+
+        return valor;
+    }
+
 }

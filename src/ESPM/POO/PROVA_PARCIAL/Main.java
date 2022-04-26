@@ -5,36 +5,35 @@ import static java.lang.Integer.parseInt;
 public class Main {
     public static void main(String[] args) {
 
-        int exit;
+        String exit;
         
 
         do {
-            exit=parseInt(JOptionPane.showInputDialog(menu()));
+            exit=JOptionPane.showInputDialog(menu());
         
             switch (exit) {
-                case 1:
+                case "1":
                     Util.reservar();
                     break;
-                case 2:
+                case "2":
                     Util.pesquisar();
                     break;
-                case 3:
+                case "3":
                  Util.imprimirReserva();
                     break;
-                case 4:
+                case "4":
                   Util.imprimirEspera();
                     break;
-                case 5:
+                case "5":
                   Util.cancelar();
                     break;
-                case 6:
-                    JOptionPane.showMessageDialog(null, "Bye Bye!");
+                case "6":
                     break;
                 default:
                    JOptionPane.showMessageDialog(null,"Essa opção não existe");
                     break;
             }
-        }while (exit != 6);
+        }while (!exit.equals("6"));
 
         
        
