@@ -1,53 +1,56 @@
 package ESPM.POO.PROVA_PARCIAL;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
+import static java.lang.Integer.parseInt;
 
 public class Main {
     public static void main(String[] args) {
 
-        int exit = 0;
-        Scanner scan = new Scanner(System.in);
-
-        while (exit != 0) {
-
-            menu();
+        int exit;
         
-            System.out.print("> ");
-            exit = scan.nextInt();
 
+        do {
+            exit=parseInt(JOptionPane.showInputDialog(menu()));
+        
             switch (exit) {
                 case 1:
+                    Util.reservar();
                     break;
                 case 2:
+                    Util.pesquisar();
                     break;
                 case 3:
+                 Util.imprimirReserva();
                     break;
                 case 4:
+                  Util.imprimirEspera();
                     break;
                 case 5:
+                  Util.cancelar();
                     break;
                 case 6:
+                    JOptionPane.showMessageDialog(null, "Bye Bye!");
                     break;
                 default:
-                    System.out.println("Essa opção não existe");
+                   JOptionPane.showMessageDialog(null,"Essa opção não existe");
                     break;
             }
-        }
+        }while (exit != 6);
 
-        System.out.println("Bye Bye!");
-        scan.close();
+        
+       
     }
 
 
-    private static void menu() {
-        System.out.println("CANTINA DO HUMBERTO");
-        System.out.println("-----------------------");
-        System.out.println("1 -> Reservar Mesa");
-        System.out.println("2 -> Pesquisar Reserva Existente");
-        System.out.println("3 -> Imprimir Reservas");
-        System.out.println("4 -> Imprimir Listas de Espera");
-        System.out.println("5 -> Cancelar Reserva");
-        System.out.println("6 -> Finalizar");
-        System.out.println();
-    }
+    public static String menu() {
+		String aux = "Restaurante CANTINA DO HUMBERTO :\n";
+		aux += "1.Reservar mesa\n";
+		aux += "2.Pesquisar reserva \n";
+		aux += "3.Imprimir reservas \n";
+		aux += "4.Imprimir lista de espera\n";
+		aux += "5.Cancelar reserva\n";
+		aux += "6.Finalizar";
+		return aux;
+
+	}
     
 }
