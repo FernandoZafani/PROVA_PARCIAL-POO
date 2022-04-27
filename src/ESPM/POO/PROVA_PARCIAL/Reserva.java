@@ -33,14 +33,14 @@ public class Reserva implements Pagamento {
         }else{
             aux+="Pessoa Jurídica\n";
         }
-            aux+=getCliente().getNome();
+            aux+=cliente.getNome();
 
         if(pagamentoAVista==true){
             aux+="\nPagamento à vista";
         }else{
             aux+="\nPagamento parcelado";
         }
-        return aux;
+        return aux ;
     }
 
     @Override

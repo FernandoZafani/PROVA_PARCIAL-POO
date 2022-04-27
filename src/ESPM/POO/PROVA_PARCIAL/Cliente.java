@@ -5,7 +5,7 @@ public abstract class Cliente {
     private String nome;
 
     public Cliente(String nome) {
-        nome=this.nome;
+       this.nome=nome;
     }
     
    public void setNome(String nome) {
@@ -19,8 +19,8 @@ public abstract class Cliente {
   
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        
+        return nome;
     }
     
 }
