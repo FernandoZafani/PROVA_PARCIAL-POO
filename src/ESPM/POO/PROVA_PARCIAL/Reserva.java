@@ -27,8 +27,20 @@ public class Reserva implements Pagamento {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return "";
+            String aux="Dados do cliente:\n";
+        if(cliente instanceof PessoaFisica){
+            aux+="Pessoa Física\n";
+        }else{
+            aux+="Pessoa Jurídica\n";
+        }
+            aux+=getCliente().getNome();
+
+        if(pagamentoAVista==true){
+            aux+="\nPagamento à vista";
+        }else{
+            aux+="\nPagamento parcelado";
+        }
+        return aux;
     }
 
     @Override
