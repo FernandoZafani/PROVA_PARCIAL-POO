@@ -1,7 +1,12 @@
 package ESPM.POO.PROVA_PARCIAL;
 
 public class PessoaFisica extends Cliente{
-    String cpf;
+    private String cpf;
+
+    public PessoaFisica(String nome,String cpf) {
+        super(nome);
+        this.cpf = cpf;
+    }
 
     public String getCpf() {
         return cpf;

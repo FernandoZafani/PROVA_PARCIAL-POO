@@ -4,8 +4,8 @@ public abstract class Cliente {
 
     private String nome;
 
-    public Cliente() {
-
+    public Cliente(String nome) {
+        nome=this.nome;
     }
     
    public void setNome(String nome) {
@@ -17,6 +17,10 @@ public abstract class Cliente {
     }
 
   
-    
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
+    }
     
 }

@@ -5,8 +5,17 @@ public class Reserva implements Pagamento {
     private Cliente cliente;
     private boolean pagamentoAVista;
 
-    public Reserva(Cliente cliente, boolean PagamentoAVista) {
-        
+    public Reserva(Cliente cliente, boolean pagamentoAVista) {
+       this.cliente=cliente;
+       this.pagamentoAVista=pagamentoAVista;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+    public Cliente getCliente() {
+        return cliente;
     }
     
     public void setPagamento(boolean pagamentoAVista) {
