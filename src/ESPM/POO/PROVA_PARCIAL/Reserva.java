@@ -27,7 +27,7 @@ public class Reserva implements Pagamento {
 
     @Override
     public String toString() {
-            String aux="Dados do cliente:\n";
+            String aux="";
         if(cliente instanceof PessoaFisica){
             aux+="Pessoa Física\n";
         }else{

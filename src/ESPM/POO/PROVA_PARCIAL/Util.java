@@ -27,9 +27,21 @@ public class Util {
             if (pagamento.equals("v")) {
                 Reserva reserva1 = new Reserva(cliente, true);
                 reserva.add(reserva1);
+                if (reserva.size() <= 6) {
+                    showMessageDialog(null, "Sua mesa foi reservada!");
+                } else {
+                    showMessageDialog(null, "Você está na lista de espera.");
+                }
+
             } else if (pagamento.equals("p")) {
                 Reserva reserva1 = new Reserva(cliente, false);
                 reserva.add(reserva1);
+                if (reserva.size() <= 6) {
+                    showMessageDialog(null, "Sua mesa foi reservada!");
+                } else {
+                    showMessageDialog(null, "Você está na lista de espera.");
+                }
+
             } else {
                 showMessageDialog(null, "Resposta inválida");
             }
@@ -44,20 +56,27 @@ public class Util {
             if (pagamento.equals("v")) {
                 Reserva reserva1 = new Reserva(cliente, true);
                 reserva.add(reserva1);
+
+                if (reserva.size() <= 6) {
+                    showMessageDialog(null, "Sua mesa foi reservada!");
+                } else {
+                    showMessageDialog(null, "Você está na lista de espera.");
+                }
+
             } else if (pagamento.equals("p")) {
                 Reserva reserva1 = new Reserva(cliente, false);
                 reserva.add(reserva1);
+                if (reserva.size() <= 6) {
+                    showMessageDialog(null, "Sua mesa foi reservada!");
+                } else {
+                    showMessageDialog(null, "Você está na lista de espera.");
+                }
+
             } else {
                 showMessageDialog(null, "Resposta inválida");
             }
         } else {
             showMessageDialog(null, "Por favor, insira uma resposta válida");
-        }
-
-        if (reserva.size() <= 6) {
-            showMessageDialog(null, "Sua mesa foi reservada!");
-        } else {
-            showMessageDialog(null, "Você está na lista de espera.");
         }
 
     }
@@ -106,18 +125,65 @@ public class Util {
         } else {
             for (int i = 0; i < reserva.size(); i++) {
                 if (i < 6) {
-                    reserva.get(i).getCliente().toString();
+                    showMessageDialog(null, (i + 1) + "º Cliente" + reserva.get(i));
+
                 }
             }
         }
     }
 
-    
-
     public static void imprimirEspera() {
+        if (reserva.size() == 0) {
+            showMessageDialog(null, "Não há reservas");
+        } else if (reserva.size() < 6) {
+            showMessageDialog(null, "Não há ninguem na fila de espera");
+        } else {
+            for (int i = 0; i < reserva.size(); i++) {
+                if (i >= 6) {
+                    showMessageDialog(null, (i - 5) + "º Cliente na fila de espera" + reserva.get(i));
+
+                }
+            }
+        }
     }
 
     public static void cancelar() {
+        String aux;
+        boolean achou = false;
+
+        if (reserva.size() == 0) {
+            showMessageDialog(null, "Não há reservar para remover");
+        } else {
+            aux = showInputDialog(null, "Insira seu CPF ou CNPJ:");
+            for (int i = 0; i < reserva.size(); i++) {
+                if (reserva.get(i).getCliente() instanceof PessoaFisica) {
+                    Cliente cliente = reserva.get(i).getCliente();
+                    PessoaFisica pf = (PessoaFisica) (cliente);
+                    if (pf.getCpf().equals(aux)) {
+                        achou = true;
+                        reserva.remove(i);
+                        showMessageDialog(null, "Sua reserva foi removida!");
+                        break;
+                    }
+                }
+                if (reserva.get(i).getCliente() instanceof PessoaJuridica) {
+                    Cliente cliente = reserva.get(i).getCliente();
+                    PessoaJuridica pj = (PessoaJuridica) (cliente);
+                    if (pj.getCnpj().equals(aux)) {
+                        achou = true;
+                        reserva.remove(i);
+                        showMessageDialog(null, "Sua reserva foi removida!");
+                        break;
+                    }
+
+                }
+
+            }
+            if (achou == false) {
+                showMessageDialog(null, "Nenhuma reserva foi encontrada");
+            }
+
+        }
     }
 
 }
